@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<meta name ="viewport" content = "width=device-width, initial-scale = 1.0">
+<title>password generator - by harshit</title>
+<link rel="stylesheet" href="styles.css">
+<body>
+<div class ="container">
+    <h1>Generate a <br> <span>Random Password</span></h1>
+    <div class ="display">
+        <input type ="text" id ="password" placeholder="password will appear here">
+        <img src = "button.png" onclick="copyPassword()">
+    </div>
+    <button onclick ="createPassword()"> <img src ="bolt.png">Generate Password</button>
+</div>
+ 
+<script>
+
+const passwordBox = document.getElementById("password");
+const length = 10;
+
+const uppercase = "QWERTYUIOPASDFGHJKLZXCVBNM";
+const lowercase = "qwertyuiopasdfghjklzxcvbnm";
+const number = "1234567890";
+const charecter = "!@#$%^&*()_+{}:'<>?|~`-=][;,./";
+
+const allChars = uppercase + lowercase + number + charecter;
+
+function createPassword(){
+    let password ="";
+    password += allChars[Math.floor(Math.random()* allChars.length)];
+   
+    while(length > password.length){
+        password += allChars[Math.floor(Math.random()* allChars.length)];
+    }
+    passwordBox.value = password;
+}
+
+
+function copyPassword(){
+    passwordBox.select();
+    document.execCommand("copy");
+}
+
+
+
+</script>
+
+    
+</body>
+</html>
